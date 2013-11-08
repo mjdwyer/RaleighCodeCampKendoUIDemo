@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Grid1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="grid"></div>
+            <script>
+                $(document).ready(function () {
+                    $("#grid").kendoGrid({
+                        dataSource: {
+                            type: "json",
+                            transport: {
+                                read: "@Url.Action("LoadGrid1", "Home")"
+                        },
+                            schema: {
+                                data: "data",
+                                total : "total",
+                                model: {
+                                    fields: {
+                                        OrderID: { type: "number" },
+                                        Freight: { type: "number" },
+                                        ShipName: { type: "string" },
+                                        OrderDate: { type: "date" },
+                                        ShipCity: { type: "string" }
+                                    }
+                                }
+                            },
+                            pageSize: 20,
+                            serverPaging: true,
+                        },
+                        height: 430,
+                        pageable: true,
+                        columns: [{
+                            field: "OrderID"
+                            },
+                            "Freight",
+                            {
+                                field: "OrderDate",
+                                title: "Order Date",
+                                width: 120,
+                                format: "{0:MM/dd/yyyy}"
+                            }, {
+                                field: "ShipName",
+                                title: "Ship Name",
+                                width: 260
+                            }, {
+                                field: "ShipCity",
+                                title: "Ship City",
+                                width: 150
+                            }
+                        ]
+                    });
+                });
+            </script>
+

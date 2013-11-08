@@ -1,0 +1,44 @@
+﻿@model K2.Models.ChartViewModel
+@{
+    ViewBag.Title = "Chart2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var series = new dynamic[] {
+                new {category="Asia",value=53.8},
+                new {category="Europe",value=16.1},
+                new {category="LatinAmerica",value=11.3},
+                new {category="Africa",value=9.6},
+                new {category="MiddleEast",value=5.2},
+                new {category="NorthAmerica",value=3.6}           
+            };    
+    
+}
+
+<h2>Chart 2</h2>
+
+<div class="chart-wrapper">
+@(Html.Kendo().Chart()
+    .Name("Chart")
+    .Title("Product Units in Stock")
+    .Series(s =>
+        {
+            s.Pie(series)
+                    .Name("pie")
+                    .Labels(l => l
+                    .Template("#= category #: #= value#")
+                        .Visible(true)
+                        .Background("#fff"));
+    }) 
+    .Tooltip(t =>
+    {
+        t.Visible(true);
+        t.Template("#= kendo.format('{0:P}',percentage) #");      
+
+    })
+    .SeriesColors("#0081da","#3aafff","#99c900","#ffeb3d","#b20753","#ff4195")
+    .Legend(l => l.Visible(true)
+    .Position(ChartLegendPosition.Right))
+    .ChartArea(chartArea => chartArea.Background("#fff"))
+
+    ) 
+</div>

@@ -1,0 +1,56 @@
+﻿@model K2.Models.ProductViewModel
+@{
+    Layout = null;
+}
+<style>
+    .k-edit-form-container { width: auto;padding-left:20px}
+</style>
+<h3>Edit Product</h3>
+    <table>
+     <tr>
+    <td>
+    @Html.LabelFor(model => model.ProductName)
+    @Html.TextBoxFor(model => model.ProductName, new { @readonly = "readonly", disabled = "disabled" })
+    </td>
+    <td>
+    @Html.LabelFor(model => model.CompanyName)
+    @Html.TextBoxFor(model => model.CompanyName, new { @readonly = "readonly", disabled = "disabled" })
+    </td>
+    </tr>
+    <tr>
+    <td>
+    @Html.LabelFor(model => model.CategoryName)
+    @Html.TextBoxFor(model => model.CategoryName, new { @readonly = "readonly", disabled = "disabled" })
+    </td>
+     <td>
+    @Html.LabelFor(model => model.QuantityPerUnit)
+    @Html.TextBoxFor(model => model.QuantityPerUnit, new { @readonly = "readonly", disabled = "disabled" })
+    </td>
+    </tr>
+    <tr>
+    <td>
+    @Html.LabelFor(model => model.UnitPrice)
+    @Html.EditorFor(model => model.UnitPrice)
+    </td>
+     <td>
+    @Html.LabelFor(model => model.UnitsInStock)
+    @Html.EditorFor(model => model.UnitsInStock)
+    </td>
+    </tr>
+    <tr>
+    <td>
+    @Html.LabelFor(model => model.UnitsOnOrder)
+    @Html.EditorFor(model => model.UnitsOnOrder)
+    </td>
+     <td>
+    @Html.LabelFor(model => model.ReorderLevel)
+    @Html.EditorFor(model => model.ReorderLevel)
+    </td>
+    </tr>
+    <tr>
+    <td>
+    @Html.LabelFor(model => model.Discontinued)
+    @Html.EditorFor(model => model.Discontinued)
+    </td>
+    </tr>
+    </table>
